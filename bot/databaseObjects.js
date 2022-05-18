@@ -1,0 +1,16 @@
+//add all the pjects we are going to use and add any helper functions in the future
+
+const Sequelize = require('sequelize');
+
+const sequelize = new Sequelize('discordbot','username','password', {
+    host: 'localhost',
+    dialect: 'sqlite',
+    logging: false,
+    storage : 'database.sqlite',
+});
+
+const TicTacToe = require('./models/tictactoe.js')(sequelize, Sequelize.DataTypes);
+
+module.exports = {
+    TicTacToe
+};
