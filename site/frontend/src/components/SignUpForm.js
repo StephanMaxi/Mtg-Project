@@ -2,9 +2,11 @@ import React, {useState} from 'react';
 import PersonalInfo from './PersonalInfo';
 import OtherInfo from './Otherinfo';
 import SignUpInfo from './SignUpInfo';
+import { useNavigate } from "react-router-dom";
 
 function SignUpForm() {
 
+        const navigate = useNavigate();
         const [page, setPage] = useState(0);
         const [formData, SetFormData] = useState({
             email: "",
@@ -43,8 +45,10 @@ function SignUpForm() {
         <div className='body'>{PageDisplay()}</div>
         <div className='footer'>
             <button 
-            disabled = {page === 0}
             onClick={()=>{
+                if(page === 0){
+                    navigate("/")
+                }
                 setPage((currPage) => currPage - 1)}}>
                      Prev
                      </button>
